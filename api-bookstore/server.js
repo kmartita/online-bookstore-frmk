@@ -8,14 +8,12 @@ app.use(bodyParser.json());
 
 // Data for books (in-memory storage)
 let books = [
-    { id: 1, title: 'Book 1', pageCount: 200, completed: false, authorId: 1, description: null },
-    { id: 2, title: 'Book 2', pageCount: 300, completed: true, authorId: 2, description: 'A great book!' }
+    { id: 1, title: 'Book 1', pageCount: 200, completed: false, authorId: 1, description: null }
 ];
 
 // Data for authors (in-memory storage)
 let authors = [
-    { id: 1, firstName: 'Marta', lastName: 'Kravchuk', age: 30 },
-    { id: 2, firstName: 'Firstname', lastName: 'Lastname', age: null }
+    { id: 1, firstName: 'Firstname', lastName: 'Lastname', age: null }
 ];
 
 // Books API

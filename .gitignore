@@ -1,5 +1,6 @@
 .idea/
 target/
+.env
 allure-results
 allure-report
 **/.DS_Store
