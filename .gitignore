@@ -1,6 +1,6 @@
 .idea/
-target
+target/
 allure-results
 allure-report
-.DS_Store
+**/.DS_Store
 .allure/
