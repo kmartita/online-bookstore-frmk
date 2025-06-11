@@ -1,9 +1,9 @@
 package com.allwyn;
 
-import com.allwyn.tool.data.bodyschema.BookFields;
-import com.allwyn.tool.data.generation.model.TestData;
+import com.allwyn.tools.data.bodyschema.BookFields;
+import com.allwyn.tools.data.generation.model.TestData;
 
-import static com.allwyn.tool.ResourceUtil.getRequiredFields;
+import static com.allwyn.tools.ResourceUtil.getRequiredFields;
 
 public class Demo {
 

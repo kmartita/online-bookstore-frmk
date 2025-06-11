@@ -1,6 +1,6 @@
-package com.allwyn.tool;
+package com.allwyn.tools;
 
-import com.allwyn.tool.data.bodyschema.Required;
+import com.allwyn.tools.data.bodyschema.Required;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.reflect.FieldUtils;
 

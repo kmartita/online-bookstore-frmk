@@ -1,6 +1,6 @@
-package com.allwyn.tool.data.generation.model;
+package com.allwyn.tools.data.generation.model;
 
-import com.allwyn.tool.data.generation.HasName;
+import com.allwyn.tools.data.generation.HasName;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.allwyn.tool.data.bodyschema;
+package com.allwyn.tools.data.bodyschema;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

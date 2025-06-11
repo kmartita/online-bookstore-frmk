@@ -1,9 +1,9 @@
-package com.allwyn.tool.helper;
+package com.allwyn.tools.helpers;
 
 import com.allwyn.server.ApiRequestBuilder;
-import com.allwyn.tool.data.Entity;
-import com.allwyn.tool.data.responses.Author;
-import com.allwyn.tool.data.responses.Book;
+import com.allwyn.tools.data.Entity;
+import com.allwyn.tools.data.responses.Author;
+import com.allwyn.tools.data.responses.Book;
 
 import java.util.Collections;
 import java.util.List;

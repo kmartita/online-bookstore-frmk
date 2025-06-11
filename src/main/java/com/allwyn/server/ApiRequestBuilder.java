@@ -1,18 +1,18 @@
 package com.allwyn.server;
 
-import com.allwyn.tool.data.DataService;
-import com.allwyn.tool.data.Entity;
-import com.allwyn.tool.data.HasId;
-import com.allwyn.tool.data.generation.HasName;
-import com.allwyn.tool.data.generation.model.TestData;
+import com.allwyn.tools.data.DataService;
+import com.allwyn.tools.data.Entity;
+import com.allwyn.tools.data.HasId;
+import com.allwyn.tools.data.generation.HasName;
+import com.allwyn.tools.data.generation.model.TestData;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
-import static com.allwyn.tool.EnvManagerUtil.BASE_URL;
-import static com.allwyn.tool.JsonUtil.generateJson;
+import static com.allwyn.tools.EnvManagerUtil.BASE_URL;
+import static com.allwyn.tools.JsonUtil.generateJson;
 import static java.lang.String.format;
 
 public class ApiRequestBuilder {

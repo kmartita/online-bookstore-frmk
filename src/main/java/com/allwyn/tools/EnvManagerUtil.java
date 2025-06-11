@@ -1,4 +1,4 @@
-package com.allwyn.tool;
+package com.allwyn.tools;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import lombok.experimental.UtilityClass;

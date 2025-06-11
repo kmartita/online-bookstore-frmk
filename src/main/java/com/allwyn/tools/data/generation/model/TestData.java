@@ -1,7 +1,7 @@
-package com.allwyn.tool.data.generation.model;
+package com.allwyn.tools.data.generation.model;
 
-import com.allwyn.tool.data.generation.Generate;
-import com.allwyn.tool.data.generation.HasName;
+import com.allwyn.tools.data.generation.Generate;
+import com.allwyn.tools.data.generation.HasName;
 
 import java.util.*;
 import java.util.stream.Collectors;

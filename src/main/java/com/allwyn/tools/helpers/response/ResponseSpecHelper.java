@@ -1,4 +1,4 @@
-package com.allwyn.tool.helper.response;
+package com.allwyn.tools.helpers.response;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.ResponseSpecification;
@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;
 
-import static com.allwyn.tool.AllureUtil.attachJsonFile;
+import static com.allwyn.tools.AllureUtil.attachJsonFile;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
