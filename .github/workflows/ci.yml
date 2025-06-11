@@ -39,6 +39,11 @@ jobs:
           npm run dev &
           sleep 5
 
+      - name: Run TestNG tests with Maven
+        run: |
+          cd ..
+          mvn test
+
       - name: Stop API server
         run: |
           cd api-bookstore
