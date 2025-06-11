@@ -39,11 +39,12 @@ jobs:
           npm run dev &
           sleep 5
 
+      - name: Set environment variable for tests
+        run: echo "BASE_URL=${{ secrets.BASE_URL }}" >> $GITHUB_ENV
+
       - name: Run TestNG tests with Maven
         run: |
-          ls -la
           cd $GITHUB_WORKSPACE
-          pwd
           mvn test
 
       - name: Stop API server

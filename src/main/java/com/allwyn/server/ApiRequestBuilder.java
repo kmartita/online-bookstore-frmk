@@ -11,12 +11,13 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
+import static com.allwyn.tools.EnvManagerUtil.BASE_URL;
 import static com.allwyn.tools.JsonUtil.generateJson;
 import static java.lang.String.format;
 
 public class ApiRequestBuilder {
 
-    private static final String BASE_URL = "http://localhost:3000/api/v1/";
+    //private static final String BASE_URL = "http://localhost:3000/api/v1/";
 
     private RequestSpecification baseRequest() {
         return new RequestSpecBuilder()
