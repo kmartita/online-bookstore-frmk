@@ -32,11 +32,12 @@ jobs:
           cd api-bookstore
           npm install
           npm install -g wait-on
-          npm run dev &
-          wait-on http://localhost:3000
+          npm run dev
 
       - name: Run TestNG tests with Maven
-        run: mvn test
+        run: |
+          cd ..
+          mvn test
 
       - name: Generate Allure Report
         if: always()
