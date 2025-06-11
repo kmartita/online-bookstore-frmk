@@ -47,16 +47,14 @@ jobs:
           cd $GITHUB_WORKSPACE
           mvn test
 
-      - name: Generate Allure Report
-        if: always()
-        run: mvn allure:generate -DresultPath=target/allure-results -o allure-report
+      - name: Generate allure results
+        run: mvn clean test allure:report
 
-      - name: Upload Allure Report
-        if: always()
+      - name: Upload Allure report
         uses: actions/upload-artifact@v4
         with:
-            name: allure-report
-            path: allure-results
+          name: allure-report
+          path: target/site/allure-maven
 
       - name: Stop API server
         run: |

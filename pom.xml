@@ -144,6 +144,15 @@
         <configuration>
           <reportVersion>${allure.maven.version}</reportVersion>
         </configuration>
+        <!--<executions>
+          <execution>
+            <id>generate-allure-report</id>
+            <phase>verify</phase>
+            <goals>
+              &lt;!&ndash;<goal>generate</goal>&ndash;&gt;
+            </goals>
+          </execution>
+        </executions>-->
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
