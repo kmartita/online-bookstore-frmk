@@ -58,13 +58,13 @@ jobs:
         run: allure generate allure-results --clean -o allure-report
 
       - name: Check report directory
-        run: ls -l /Users/runner/work/online-bookstore-frmk/allure-report
+        run: ls -l $GITHUB_WORKSPACE/allure-report
 
       - name: Upload Allure report
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: /Users/runner/work/online-bookstore-frmk/allure-report
+          path: $GITHUB_WORKSPACE/allure-report
 
       - name: Stop API server
         run: |
