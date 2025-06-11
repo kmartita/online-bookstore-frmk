@@ -62,11 +62,11 @@ jobs:
       - name: Check generated report
         run: ls -l ./allure-report
 
-      - name: Upload allure-results
+      - name: Upload allure-report
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results
-          path: ./allure-report/index.html
+          name: allure-report
+          path: ./allure-report
 
       - name: Stop API server
         run: |
