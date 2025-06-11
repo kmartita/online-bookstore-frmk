@@ -5,8 +5,8 @@ import lombok.Getter;
 @Getter
 public enum Entity {
 
-    TEAM("Books"),
-    SPACE("Authors");
+    BOOKS("Books"),
+    AUTHORS("Authors");
 
     private final String name;
 

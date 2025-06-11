@@ -27,7 +27,6 @@ public class TestData<Field extends Enum<Field> & HasName> {
         return fields.get(field);
     }
 
-    //TODO -> use this template for getting type (Integer, ... etc) of another object
     public String getString(Field field) {
         if (fields.get(field) instanceof String) {
             return (String) fields.get(field);
@@ -35,6 +34,22 @@ public class TestData<Field extends Enum<Field> & HasName> {
             return null;
         }
         throw new RuntimeException(format("Object [%s] is not instance of String class", fields.get(field)));
+    }
+
+    public Boolean getBoolean(Field field) {
+        if (fields.get(field) instanceof Boolean) {
+            return (Boolean) fields.get(field);
+        }
+        throw new RuntimeException(format("Object [%s] is not instance of Boolean class", fields.get(field)));
+    }
+
+    public Integer getInteger(Field field) {
+        if (fields.get(field) instanceof Integer) {
+            return (Integer) fields.get(field);
+        } else if (Objects.isNull(fields.get(field))) {
+            return null;
+        }
+        throw new RuntimeException(format("Object [%s] is not instance of Integer class", fields.get(field)));
     }
 
     public Set<Field> includedFields() {

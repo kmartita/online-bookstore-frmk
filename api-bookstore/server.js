@@ -8,7 +8,8 @@ app.use(bodyParser.json());
 
 // Data for books (in-memory storage)
 let books = [
-    { id: 1, title: 'Book 1', pageCount: 200, completed: false, authorId: 1, description: null }
+    { id: 1, title: 'Book 1', pageCount: 200, completed: false, description: null, authorId: 1 },
+    { id: 2, title: 'Book 2', pageCount: 130, completed: true, description: 'A great book!', authorId: null }
 ];
 
 // Data for authors (in-memory storage)
@@ -16,9 +17,17 @@ let authors = [
     { id: 1, firstName: 'Firstname', lastName: 'Lastname', age: null }
 ];
 
+function isBoolean(value) {
+    return typeof value === 'boolean';
+}
+
+function isInteger(value) {
+    return Number.isInteger(value);
+}
+
 // Books API
 app.get('/api/v1/Books', (req, res) => {
-    res.json(books); // Retrieve a list of all books
+    res.json({ "Books": books }); // Retrieve a list of all books
 });
 
 app.get('/api/v1/Books/:id', (req, res) => {
@@ -31,23 +40,35 @@ app.post('/api/v1/Books', (req, res) => {
     const { title, pageCount, completed, authorId, description } = req.body;
 
     // Validate required fields
-    if (!title || !pageCount || completed === undefined || !authorId) {
-        return res.status(400).json({ message: 'Title, pageCount, completed, and authorId are required fields' });
+    if (!title || !pageCount || completed === undefined) {
+        return res.status(400).json({ message: 'Title, pageCount, and completed are required fields' });
     }
 
-    // Validate authorId exists
-    const authorExists = authors.some(author => author.id === parseInt(authorId));
-    if (!authorExists) {
-        return res.status(400).json({ message: 'Invalid authorId: Author not found' });
+    if (!isInteger(pageCount)) {
+       return res.status(400).json({ message: 'pageCount must be an integer' });
+    }
+    if (!isBoolean(completed)) {
+       return res.status(400).json({ message: 'completed must be a boolean' });
+    }
+    if (authorId !== undefined && authorId !== null && !isInteger(authorId)) {
+        return res.status(400).json({ message: 'authorId must be an integer or null' });
     }
 
-    // Check if a book with the same title already exists for the author
-    const bookExists = books.some(
-        book => book.authorId === parseInt(authorId) && book.title === title
-    );
+    // Validate authorId exists (if provided)
+    if (authorId) {
+        const authorExists = authors.some(author => author.id === parseInt(authorId));
+        if (!authorExists) {
+            return res.status(400).json({ message: 'Invalid authorId: Author not found' });
+        }
 
-    if (bookExists) {
-        return res.status(400).json({ message: 'A book with the same title already exists for this author' });
+        // Check if a book with the same title already exists for the author
+        const bookExists = books.some(
+            book => book.authorId === parseInt(authorId) && book.title === title
+        );
+
+        if (bookExists) {
+            return res.status(400).json({ message: 'A book with the same title already exists for this author' });
+        }
     }
 
     const newBook = {
@@ -55,8 +76,8 @@ app.post('/api/v1/Books', (req, res) => {
         title,
         pageCount: parseInt(pageCount),
         completed,
-        authorId: parseInt(authorId),
-        description: description || null // description is not required
+        description: description || null, // description is not required
+        authorId: authorId || null // Allow null authorId
     };
 
     books.push(newBook);
@@ -83,7 +104,7 @@ app.delete('/api/v1/Books/:id', (req, res) => {
 
 // Authors API
 app.get('/api/v1/Authors', (req, res) => {
-    res.json(authors); // Retrieve a list of all authors
+    res.json({ "Authors": authors }); // Retrieve a list of all authors
 });
 
 app.get('/api/v1/Authors/:id', (req, res) => {
@@ -116,7 +137,7 @@ app.put('/api/v1/Authors/:id', (req, res) => {
     const author = authors.find(a => a.id === id);
     if (!author) return res.status(404).send('Author not found');
 
-     // Update any fields provided in the request body
+    // Update any fields provided in the request body
     Object.keys(req.body).forEach(key => {
         author[key] = req.body[key];
     });

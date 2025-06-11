@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "pageCount": {
+      "type": "integer"
+    },
+    "completed": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": ["string", "null"]
+    },
+    "authorId": {
+      "type": ["integer", "null"]
+    }
+  },
+  "required": ["id", "title", "pageCount", "completed"]
+}

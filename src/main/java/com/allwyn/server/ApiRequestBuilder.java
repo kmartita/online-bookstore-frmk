@@ -36,7 +36,7 @@ public class ApiRequestBuilder {
                 .basePath(format("%s/%s/%s", data.getEntity().getName(), data.getResponse().getId(), entity.getName()));
     }
 
-    public RequestSpecification basePath(Entity entity, String id){
+    public RequestSpecification basePath(Entity entity, int id){
         return baseRequest()
                 .basePath(format("%s/%s", entity.getName(), id));
     }
@@ -45,19 +45,22 @@ public class ApiRequestBuilder {
         return basePath(data, entity);
     }
 
-    public RequestSpecification getById(Entity entity, String id) {
+    public RequestSpecification get(Entity entity) {
+        return basePath(entity);
+    }
+
+    public RequestSpecification getById(Entity entity, int id) {
         return basePath(entity, id);
     }
 
-    public <Response extends HasId, Field extends Enum<Field> & HasName> RequestSpecification create(DataService<Response> data,
-                                                                                                     Entity entity,
-                                                                                                     TestData<Field> model) {
-        return get(data, entity)
+    public <Field extends Enum<Field> & HasName> RequestSpecification create(Entity entity,
+                                                                             TestData<Field> model) {
+        return get(entity)
                 .body(generateJson(model).toString());
     }
 
     public <Field extends Enum<Field> & HasName> RequestSpecification update(Entity entity,
-                                                                             String id,
+                                                                             int id,
                                                                              TestData<Field> model) {
         return getById(entity, id)
                 .body(generateJson(model).toString());
