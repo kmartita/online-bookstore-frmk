@@ -35,10 +35,12 @@ jobs:
 
       - name: Start server
         run: |
+          cd api-bookstore
           npm run dev &
 
       - name: Wait for API server
         run: |
+          cd api-bookstore
           wait-on http://localhost:3000
 
       - name: Stop API server
