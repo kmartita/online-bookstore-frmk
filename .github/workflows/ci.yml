@@ -42,6 +42,7 @@ jobs:
       - name: Run TestNG tests with Maven
         run: |
           cd ..
+          pwd
           mvn test
 
       - name: Stop API server
