@@ -51,7 +51,8 @@ jobs:
         run: ls -l $GITHUB_WORKSPACE/allure-results
 
       - name: Setup Allure
-        uses: actions/setup-allure@v4
+        run: |
+          brew install allure
 
       - name: Generate allure results
         run: allure generate allure-results --clean -o allure-report
