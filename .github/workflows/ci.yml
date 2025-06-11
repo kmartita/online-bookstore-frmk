@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: target/site/allure-maven
+          path: $GITHUB_WORKSPACE/target/site/allure-maven
 
       - name: Stop API server
         run: |
