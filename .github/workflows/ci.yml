@@ -37,12 +37,9 @@ jobs:
         run: |
           cd api-bookstore
           npm run dev &
-
-      - name: Wait for API server
-        run: |
-          cd api-bookstore
-          npx wait-on http://localhost:3000
+          sleep 5
 
       - name: Stop API server
         run: |
+          cd api-bookstore
           pkill -f "node server.js" || true
