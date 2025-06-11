@@ -1,7 +1,7 @@
 {
   "name": "api-bookstore",
   "version": "1.0.0",
-  "description": "Local API for testing",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,10 +10,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
     "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "wait-on": "^8.0.3"
   }
 }

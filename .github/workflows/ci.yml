@@ -27,15 +27,19 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies and start API server
+      - name: Install dependencies
         run: |
           cd api-bookstore
           npm install
           npm install --save-dev wait-on
+
+      - name: Start server
+        run: |
           npm run dev &
 
       - name: Wait for API server
-        run: npx wait-on http://localhost:3000
+        run: |
+          wait-on http://localhost:3000
 
       - name: Stop API server
         run: pkill -f "node server.js" || true
