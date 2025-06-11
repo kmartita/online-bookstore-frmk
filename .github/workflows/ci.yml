@@ -48,19 +48,19 @@ jobs:
           mvn clean test
 
       - name: Check allure results exist
-        run: ls -l $GITHUB_WORKSPACE/target/allure-results
+        run: ls -l /Users/runner/work/online-bookstore-frmk/target/allure-results
 
       - name: Generate allure results
         run: mvn allure:report
 
       - name: Check report directory
-        run: ls -l $GITHUB_WORKSPACE/target/site/allure-maven
+        run: ls -l /Users/runner/work/online-bookstore-frmk/target/site/allure-maven
 
       - name: Upload Allure report
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: $GITHUB_WORKSPACE/target/site/allure-maven
+          path: /Users/runner/work/online-bookstore-frmk/target/site/allure-maven
 
       - name: Stop API server
         run: |
