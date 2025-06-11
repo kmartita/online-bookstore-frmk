@@ -17,8 +17,6 @@ import static java.lang.String.format;
 
 public class ApiRequestBuilder {
 
-    //private static final String BASE_URL = "http://localhost:3000/api/v1/";
-
     private RequestSpecification baseRequest() {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URL)
