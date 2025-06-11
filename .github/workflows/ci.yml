@@ -33,7 +33,9 @@ jobs:
           npm install
           npm install --save-dev wait-on
           npm run dev &
-          npx wait-on http://localhost:3000
+
+      - name: Wait for API server
+        run: npx wait-on http://localhost:3000
 
       - name: Stop API server
         run: pkill -f "node server.js" || true
