@@ -41,7 +41,7 @@ jobs:
 
       - name: Run TestNG tests with Maven
         run: |
-          cd online-bookstore-frmk
+          cd $GITHUB_WORKSPACE/online-bookstore-frmk
           pwd
           mvn test
 
