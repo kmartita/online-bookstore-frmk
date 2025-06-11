@@ -31,8 +31,9 @@ jobs:
         run: |
           cd api-bookstore
           npm install
+          npm install -g wait-on
           npm run dev &
-          npx wait-on http://localhost:3000
+          wait-on http://localhost:3000
 
       - name: Run TestNG tests with Maven
         run: mvn test
