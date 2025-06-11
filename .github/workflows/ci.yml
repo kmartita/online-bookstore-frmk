@@ -56,24 +56,17 @@ jobs:
         run: |
           brew install allure
 
-      - name: Generate allure report
-        run: |
-          allure generate $GITHUB_WORKSPACE/allure-results --clean -o $GITHUB_WORKSPACE/allure-report
+      - name: Generate Allure report
+        run: allure generate ./allure-results --clean -o ./allure-report
 
-      - name: Check report directory
-        run: ls -l $GITHUB_WORKSPACE/allure-report
+      - name: Check generated report
+        run: ls -l ./allure-report
 
       - name: Upload allure-results
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
-          path: /Users/runner/work/online-bookstore-frmk/online-bookstore-frmk/allure-results
-
-      - name: Upload allure-report
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: /Users/runner/work/online-bookstore-frmk/online-bookstore-frmk/allure-report
+          path: ./allure-report/index.html
 
       - name: Stop API server
         run: |
