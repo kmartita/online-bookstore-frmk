@@ -1,5 +1,6 @@
-package com.allwyn;
+package com.allwyn.books;
 
+import com.allwyn.BaseTest;
 import com.allwyn.server.ResponseHandler;
 import com.allwyn.tools.data.Entity;
 import com.allwyn.tools.data.bodyschemas.BookFields;
@@ -14,12 +15,13 @@ import org.testng.annotations.*;
 
 import static com.allwyn.tools.ResourceUtil.getRequiredFields;
 import static com.allwyn.tools.helpers.StatusCodeData.*;
-import static com.allwyn.tools.helpers.response.ResponseSpecHelper.*;
+import static com.allwyn.tools.helpers.response.ResponseSpecHelper.specOnCreating;
+import static com.allwyn.tools.helpers.response.ResponseSpecHelper.specOnSchemaValidating;
 import static java.lang.String.format;
 import static org.hamcrest.Matchers.*;
 
 @Feature("Book")
-public class BookScenarioTest extends BaseTest{
+public class BookScenarioTest extends BaseTest {
 
     private final String ONE_BOOK_EXISTS = "One book exists";
     private final String NEGATIVE_TYPE_DATA = "Negative type data";
