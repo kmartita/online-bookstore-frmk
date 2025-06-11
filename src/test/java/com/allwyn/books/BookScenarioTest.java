@@ -2,10 +2,10 @@ package com.allwyn.books;
 
 import com.allwyn.BaseTest;
 import com.allwyn.server.ResponseHandler;
-import com.allwyn.tools.data.Entity;
-import com.allwyn.tools.data.bodyschemas.BookFields;
-import com.allwyn.tools.data.generation.models.TestData;
-import com.allwyn.tools.data.responses.Book;
+import com.allwyn.tool.data.Entity;
+import com.allwyn.tool.data.bodyschema.BookFields;
+import com.allwyn.tool.data.generation.model.TestData;
+import com.allwyn.tool.data.responses.Book;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
@@ -13,10 +13,10 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.*;
 
-import static com.allwyn.tools.ResourceUtil.getRequiredFields;
-import static com.allwyn.tools.helpers.StatusCodeData.*;
-import static com.allwyn.tools.helpers.response.ResponseSpecHelper.specOnCreating;
-import static com.allwyn.tools.helpers.response.ResponseSpecHelper.specOnSchemaValidating;
+import static com.allwyn.tool.ResourceUtil.getRequiredFields;
+import static com.allwyn.tool.helper.StatusCodeData.*;
+import static com.allwyn.tool.helper.response.ResponseSpecHelper.specOnCreating;
+import static com.allwyn.tool.helper.response.ResponseSpecHelper.specOnSchemaValidating;
 import static java.lang.String.format;
 import static org.hamcrest.Matchers.*;
 
@@ -159,7 +159,7 @@ public class BookScenarioTest extends BaseTest {
     @Test(priority = 5, dataProvider = NEGATIVE_TYPE_DATA, alwaysRun = true)
     @Parameters({"Data:", "Error:"})
     public void validatePostABookWithNegativeTypeData(TestData<BookFields> data,
-                                                         String error) {
+                                                      String error) {
         ResponseSpecification specByFailure = new ResponseSpecBuilder()
                 .expectStatusCode(STATUS_CODE_400)
                 .expectStatusLine(BAD_REQUEST)

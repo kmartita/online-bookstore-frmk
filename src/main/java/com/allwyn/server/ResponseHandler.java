@@ -1,6 +1,6 @@
 package com.allwyn.server;
 
-import com.allwyn.tools.JsonUtil;
+import com.allwyn.tool.JsonUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;

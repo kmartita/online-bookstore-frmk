@@ -1,12 +1,9 @@
 package com.allwyn;
 
-import com.allwyn.server.ApiRequestExecutor;
-import com.allwyn.tools.data.Entity;
-import com.allwyn.tools.data.bodyschemas.BookFields;
-import com.allwyn.tools.data.generation.models.TestData;
+import com.allwyn.tool.data.bodyschema.BookFields;
+import com.allwyn.tool.data.generation.model.TestData;
 
-import static com.allwyn.tools.JsonUtil.generateJson;
-import static com.allwyn.tools.ResourceUtil.getRequiredFields;
+import static com.allwyn.tool.ResourceUtil.getRequiredFields;
 
 public class Demo {
 

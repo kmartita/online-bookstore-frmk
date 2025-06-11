@@ -1,5 +1,6 @@
-package com.allwyn.tools.data.generation;
+package com.allwyn.tool.data.generation;
 
 public interface HasName {
+
     String getName();
 }

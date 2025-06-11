@@ -1,4 +1,4 @@
-package com.allwyn.tools.helpers;
+package com.allwyn.tool.helper;
 
 public interface StatusCodeData {
 

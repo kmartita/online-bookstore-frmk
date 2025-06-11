@@ -105,6 +105,7 @@
 
   <build>
     <plugins>
+      <!-- + -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -114,6 +115,7 @@
           <target>${maven.compiler.target}</target>
         </configuration>
       </plugin>
+      <!-- + -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -134,6 +136,7 @@
           </dependency>
         </dependencies>
       </plugin>
+      <!-- + -->
       <plugin>
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-maven</artifactId>
@@ -142,6 +145,7 @@
           <reportVersion>${allure.maven.version}</reportVersion>
         </configuration>
       </plugin>
+      <!-- + -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -163,6 +167,63 @@
           </execution>
         </executions>
       </plugin>
+
+      <!--<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.8</version>
+        <executions>
+          <execution>
+            <id>install-node-dependencies</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo message="Installing Node.js dependencies..." />
+                <exec executable="npm" dir="${basedir}/api-bookstore">
+                  <arg value="install" />
+                </exec>
+              </target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>start-api-server</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo message="Starting API server..." />
+                <exec executable="npm" dir="${basedir}/api-bookstore" spawn="true">
+                  <arg value="run" />
+                  <arg value="dev" />
+                </exec>
+                <sleep seconds="5"/>
+              </target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop-api-server</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo message="Stopping API server..." />
+                <exec executable="npm" dir="${basedir}/api-bookstore">
+                  <arg value="run" />
+                  <arg value="stop" />
+                </exec>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>-->
+
     </plugins>
   </build>
 </project>

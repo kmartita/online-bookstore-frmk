@@ -1,6 +1,6 @@
-package com.allwyn.tools.data.responses;
+package com.allwyn.tool.data.responses;
 
-import com.allwyn.tools.data.HasId;
+import com.allwyn.tool.data.HasId;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

@@ -1,8 +1,8 @@
 package com.allwyn.server;
 
-import com.allwyn.tools.data.Entity;
-import com.allwyn.tools.data.generation.HasName;
-import com.allwyn.tools.data.generation.models.TestData;
+import com.allwyn.tool.data.Entity;
+import com.allwyn.tool.data.generation.HasName;
+import com.allwyn.tool.data.generation.model.TestData;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;

@@ -153,3 +153,8 @@ app.delete('/api/v1/Authors/:id', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`); // Server starts listening on the specified port
 });
+
+process.on('SIGINT', () => {
+  console.log('Stopping the server...');
+  process.exit();
+});

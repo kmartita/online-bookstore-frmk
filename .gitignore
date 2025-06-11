@@ -5,3 +5,4 @@ allure-results
 allure-report
 **/.DS_Store
 .allure/
+api-bookstore/node_modules/

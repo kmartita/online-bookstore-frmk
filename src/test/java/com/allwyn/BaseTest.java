@@ -1,9 +1,9 @@
 package com.allwyn;
 
 import com.allwyn.server.ApiRequestExecutor;
-import com.allwyn.tools.data.Entity;
-import com.allwyn.tools.data.HasId;
-import com.allwyn.tools.helpers.EntityService;
+import com.allwyn.tool.data.Entity;
+import com.allwyn.tool.data.HasId;
+import com.allwyn.tool.helper.EntityService;
 import io.qameta.allure.testng.AllureTestNg;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;

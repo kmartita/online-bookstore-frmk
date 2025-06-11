@@ -1,7 +1,7 @@
-package com.allwyn.tools;
+package com.allwyn.tool;
 
-import com.allwyn.tools.data.generation.HasName;
-import com.allwyn.tools.data.generation.models.TestData;
+import com.allwyn.tool.data.generation.HasName;
+import com.allwyn.tool.data.generation.model.TestData;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;

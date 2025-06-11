@@ -1,4 +1,4 @@
-package com.allwyn.tools.data;
+package com.allwyn.tool.data;
 
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package com.allwyn.tools;
+package com.allwyn.tool;
 
 import io.qameta.allure.Attachment;
 import lombok.experimental.UtilityClass;

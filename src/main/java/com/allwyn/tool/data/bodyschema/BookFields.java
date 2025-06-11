@@ -1,8 +1,8 @@
-package com.allwyn.tools.data.bodyschemas;
+package com.allwyn.tool.data.bodyschema;
 
-import com.allwyn.tools.data.Entity;
-import com.allwyn.tools.data.generation.Generate;
-import com.allwyn.tools.data.generation.HasName;
+import com.allwyn.tool.data.Entity;
+import com.allwyn.tool.data.generation.Generate;
+import com.allwyn.tool.data.generation.HasName;
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.StringUtils;
 
