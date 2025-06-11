@@ -41,7 +41,7 @@ jobs:
 
       - name: Run TestNG tests with Maven
         run: |
-          cd ..
+          cd online-bookstore-frmk
           pwd
           mvn test
 
