@@ -1,7 +1,6 @@
 package com.allwyn.server;
 
 import com.allwyn.tools.JsonUtil;
-import com.fasterxml.jackson.core.type.TypeReference;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
 
@@ -18,11 +17,7 @@ public class ResponseHandler {
         return this;
     }
 
-    public <R> R extractAs(Class<R> clazz) {
+    public <Endpoint> Endpoint extractAs(Class<Endpoint> clazz) {
         return JsonUtil.readJson(this.response.then().extract().body().asString(), clazz);
-    }
-
-    public <R> R extractAs(TypeReference<R> typeReference) {
-        return JsonUtil.readJson(this.response.then().extract().body().asString(), typeReference);
     }
 }

@@ -45,7 +45,6 @@ public enum BookFields implements HasName, Generate {
 
     AUTHOR_ID("authorId");
 
-
     private final String name;
 
     BookFields(String name) {
@@ -62,6 +61,6 @@ public enum BookFields implements HasName, Generate {
     @Override
     public Object generate() {
         throw new UnsupportedOperationException(format("Auto data generation is not supported for " +
-                                                       "[entity=%s, field=%s]", Entity.BOOKS.getName(), this));
+                                                       "[entity=%s, field=%s]", Entity.BOOKS, this));
     }
 }

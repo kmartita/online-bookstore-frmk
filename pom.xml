@@ -63,7 +63,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.13.4.1</version>
+      <version>2.13.4.2</version>
     </dependency>
     <dependency>
       <groupId>io.rest-assured</groupId>
@@ -144,15 +144,6 @@
         <configuration>
           <reportVersion>${allure.maven.version}</reportVersion>
         </configuration>
-        <!--<executions>
-          <execution>
-            <id>generate-allure-report</id>
-            <phase>verify</phase>
-            <goals>
-              &lt;!&ndash;<goal>generate</goal>&ndash;&gt;
-            </goals>
-          </execution>
-        </executions>-->
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -175,7 +166,6 @@
           </execution>
         </executions>
       </plugin>
-
     </plugins>
   </build>
 </project>

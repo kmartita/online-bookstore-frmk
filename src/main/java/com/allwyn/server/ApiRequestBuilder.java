@@ -31,18 +31,9 @@ public class ApiRequestBuilder {
                 .basePath(entity.getName());
     }
 
-    public <Response extends HasId> RequestSpecification basePath(DataService<Response> data, Entity entity){
-        return baseRequest()
-                .basePath(format("%s/%s/%s", data.getEntity().getName(), data.getResponse().getId(), entity.getName()));
-    }
-
     public RequestSpecification basePath(Entity entity, int id){
         return baseRequest()
                 .basePath(format("%s/%s", entity.getName(), id));
-    }
-
-    public <Response extends HasId> RequestSpecification get(DataService<Response> data, Entity entity) {
-        return basePath(data, entity);
     }
 
     public RequestSpecification get(Entity entity) {

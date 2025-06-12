@@ -32,5 +32,4 @@ public class DataService<Response> {
     public String toString() {
         return String.format("Data[entity=%s, response=%s", entity, response);
     }
-
 }

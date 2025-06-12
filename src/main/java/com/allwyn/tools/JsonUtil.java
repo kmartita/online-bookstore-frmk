@@ -29,14 +29,6 @@ public class JsonUtil {
         }
     }
 
-    public static <Response> Response readJson(String json, TypeReference<Response> typeReference) {
-        try {
-            return MAPPER.readValue(json, typeReference);
-        } catch (JsonProcessingException e) {
-            throw new IllegalStateException(format("Couldn't map json [%s] to type [%s]", json, typeReference.getType()), e);
-        }
-    }
-
     public static <Field extends Enum<Field> & HasName> ObjectNode generateJson(TestData<Field> model) {
         ObjectNode objectNode = MAPPER.createObjectNode();
 

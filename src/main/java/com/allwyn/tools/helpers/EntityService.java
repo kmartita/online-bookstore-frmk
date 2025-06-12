@@ -19,8 +19,8 @@ public class EntityService {
         request = new ApiRequestBuilder();
     }
 
-    private <R> List<R> getEntities(Entity entity, Class<R> entityType) {
-        List<R> entities = given()
+    private <Endpoint> List<Endpoint> getEntities(Entity entity, Class<Endpoint> entityType) {
+        List<Endpoint> entities = given()
                 .spec(request.basePath(entity))
                 .when()
                 .get()

@@ -60,10 +60,6 @@ public class TestData<Field extends Enum<Field> & HasName> {
         return new TestDataBuilder<>();
     }
 
-    public static <Field extends Enum<Field> & HasName> TestDataBuilder<Field> builder(Class<Field> clazz) {
-        return new TestDataBuilder<>();
-    }
-
     private TestData<Field> removeFields(Set<Field> fieldsToRemove) {
         TestDataBuilder<Field> builder = TestData.builder();
 
@@ -83,7 +79,7 @@ public class TestData<Field extends Enum<Field> & HasName> {
     public static <Field extends Enum<Field> & Generate & HasName> TestDataBuilder<Field> preGenerate(Set<Field> fields) {
         Objects.requireNonNull(fields, SET_OF_FIELDS_TO_GENERATE_MODEL_MUST_NOT_BE_NULL);
         TestDataBuilder<Field> newModelBuilder = TestData.builder();
-        fields.forEach(f -> newModelBuilder.setField(f, f.generate()));
+        fields.forEach(field -> newModelBuilder.setField(field, field.generate()));
         return newModelBuilder;
     }
 
