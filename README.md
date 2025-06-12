@@ -1,8 +1,8 @@
 # API Automation Demo Project: Testing Online Bookstore
 
-This framework automates the testing of a bookstore's RESTful API. 
+This framework automates the testing of a bookstore's **RESTful API**. 
 A completely custom REST API has been developed using **Express.js**, referencing the structure for API endpoints from the demo testing service [FakeRestApi.Web V1](https://fakerestapi.azurewebsites.net/) which operates in static mode.
-This framework aims to create a maintainable test framework, implement reusable code, handle various scenarios, generate informative test reports, and establish a CI/CD pipeline for continuous integration.
+This project aims to create a maintainable test framework, implement reusable code, handle various scenarios, generate informative test reports, and establish a CI/CD pipeline for continuous integration.
 
 Below are the tools and technologies used in this framework:<br/>
 - **Programming Language**: Java
@@ -33,17 +33,17 @@ Below are the tools and technologies used in this framework:<br/>
 The REST API, built with **Express.js**, is already set up and configured for immediate use. 
 The following steps provide details for understanding the setup process and exploring the existing configuration:<br/>
 
-**Step 1.** Project Initialization<br/>
+_**Step 1.** Project Initialization:_<br/>
 A new project directory (`api-bookstore/`) was created, and `npm init -y` command was used to initialize the project. 
 This generates a `package.json` file, which is essential for managing project dependencies.
 
-**Step 2.** Installing Dependencies<br/>
+_**Step 2.** Installing Dependencies:_<br/>
 The following dependencies were installed by running `npm install express body-parser nodemon`:
-*   `express`: The Express.js framework for building the API.
-*   `body-parser`: Middleware for parsing request bodies, allowing easy access to data sent in POST and PUT requests.
-*   `nodemon`: A utility that automatically restarts the server upon file changes, enhancing the development experience.
+*   `express` - the Express.js framework for building the API.
+*   `body-parser` - middleware for parsing request bodies, allowing easy access to data sent in POST and PUT requests.
+*   `nodemon` - utility that automatically restarts the server upon file changes, enhancing the development experience.
 
-**Step 3.** Creating `server.js`<br/>
+_**Step 3.** Creating `server.js`_<br/>
 The core logic of the API resides in the `server.js` file. It handles routing, request processing, and data management, performing the following key tasks:
 *   Loads necessary libraries like Express.js for routing and request handling, and middleware for parsing incoming data.
 *   Creates an instance of the Express application, which serves as the foundation for the API.
@@ -54,21 +54,21 @@ The core logic of the API resides in the `server.js` file. It handles routing, r
 
 You can explore the `server.js` file in the `api-bookstore/` directory for more details on the API implementation.
 
-**Step 4.** Configuring `package.json`<br/>
+_**Step 4.** Configuring `package.json`_<br/>
 The `package.json` is an important file in Node.js projects. It has several critical functions:
-*   **Metadata:** Contains metadata about the project, such as name, version, description, author, license, etc.
-*   **Dependencies:** Indicates which other packages (libraries) your project depends on. The `npm` uses this information to install the necessary packages.
-*   **Scripts:** Allows you to define scripts to automate various tasks, such as starting, testing, or building your project.
+*   Contains **metadata** about the project, such as name, version, description, author, license, etc.
+*   Indicates **dependencies** which other packages (libraries) your project depends on. The `npm` uses this information to install the necessary packages.
+*   Allows you to define **scripts** to automate various tasks, such as starting, testing, or building your project.
 *   Contains additional settings for tools used in the project.
 
 You can explore the `package.json` file in the `api-bookstore/` directory for more details. 
 It is used to define dependencies (**express**, **body-parser**, **nodemon**) and scripts (`start`, `dev`). 
 This helps to quickly set up the project by simply running `npm install`.
 
-**Step 5.** Run server<br/>
+_**Step 5.** Run server_<br/>
 To start the server in development mode, use the following command `npm run dev`. 
 This command leverages `nodemon` to automatically restart the server whenever file changes are detected. 
-Upon successful startup, you should see a message similar to "Server is running on port 3000" in your terminal, confirming that the API is active and listening for requests.
+Upon successful startup, you should see a message similar to _"Server is running on port 3000"_ in your terminal, confirming that the API is active and listening for requests.
 
 <a id="three"></a>
 ## 2. Framework Overview
@@ -111,10 +111,10 @@ The framework's architecture is built on a structured directory organization to 
 Creating API test scenarios involves defining test data and expected API behavior.<br/>
 
 **Steps to Build API Test Scenarios:**
-1. _Generate Required Test Data:_ Use the `TestData` utility to generate the required test data model with necessary fields.
-2. _Customize Test Data:_ Modify the test data by removing fields or setting specific field values to suit different test scenarios.
-3. _Define Response Specifications:_ Create expected response specifications using REST Assured to validate API responses.
-4. _Execute API Requests:_ Perform API requests using the generated test data and validate responses against the defined specifications.
+1. _Generate Required Test Data:_ use the `TestData` utility to generate the required test data model with necessary fields.
+2. _Customize Test Data:_ modify the test data by removing fields or setting specific field values to suit different test scenarios.
+3. _Define Response Specifications:_ create expected response specifications using REST Assured to validate API responses.
+4. _Execute API Requests:_ perform API requests using the generated test data and validate responses against the defined specifications.
 
 <a id="six"></a>
 ## 5. API Test Execution
@@ -179,20 +179,20 @@ This project utilizes a CI/CD pipeline configured using GitHub Actions. The pipe
 The configuration file for the workflow is located at `.github/workflows/ci.yml`.
 
 The pipeline consists of the following stages:
-1. _Checkout code:_ retrieves the project code using `actions/checkout@v3`.
-2. _Set up JDK 11:_ configures **Java 11** for running **Maven** tests using `actions/setup-java@v3`.
-3. _Install Node.js:_ sets up **Node.js** version 18 for the **Express.js** API using `actions/setup-node@v3`.
-4. _Install API dependencies:_ installs dependencies for the API server, including **express**, **body-parser**, and **wait-on**.
-5. _Start API Server for bookstore:_ starts the **Express.js** API server in the background for testing.
-6. _Set environment variable for tests:_ configures the **BASE_URL** environment variable from GitHub Secrets for the test scripts. 
-7. _Clean allure artifacts before run tests:_ it removes any existing Allure report artifacts, starting with a clean state.
-8. _Run tests:_ executes the TestNG tests using Maven with `mvn clean test`.
-9. _Check allure results exist:_ verifies that Allure test results were generated correctly.
-10. _Setup Allure:_ installs the Allure command-line tool, that requires for generate test reports.
-11. _Generate Allure report:_ generates the Allure report by processing the test results. It also removes directory _./allure-report_
-12. _Check generated report:_ It checks directory to make sure that step "Generate Allure Report" was successful
-13. _Upload `allure-report`:_ Uploads the generated Allure report as an artifact for easy access and analysis.
-14. _Stop API Server for bookstore:_ Terminates the Express.js API server using `pkill` to prevent resource conflicts in subsequent steps.
+1. **_Checkout code:_** retrieves the project code using `actions/checkout@v3`.
+2. **_Set up JDK 11:_** configures **Java 11** for running **Maven** tests using `actions/setup-java@v3`.
+3. **_Install Node.js:_** sets up **Node.js** version 18 for the **Express.js** API using `actions/setup-node@v3`.
+4. **_Install API dependencies:_** installs dependencies for the API server, including **express**, **body-parser**, and **wait-on**.
+5. **_Start API Server for bookstore:_** starts the **Express.js** API server in the background for testing.
+6. **_Set environment variable for tests:_** configures the **BASE_URL** environment variable from GitHub Secrets for the test scripts. 
+7. **_Clean allure artifacts before run tests:_** it removes any existing **Allure** report artifacts, starting with a clean state.
+8. **_Run tests:_** executes the **TestNG** tests using Maven with `mvn clean test`.
+9. **_Check allure results exist:_** verifies that **Allure** test results were generated correctly.
+10. **_Setup Allure:_** installs the **Allure** command-line tool, that requires for generate test reports.
+11. **_Generate Allure report:_** generates the **Allure** report by processing the test results. It also removes directory `./allure-report`
+12. **_Check generated report:_** It checks directory to make sure that step _"Generate Allure Report"_ was successful
+13. **_Upload `allure-report`:_** Uploads the generated Allure report as an artifact for easy access and analysis.
+14. **_Stop API Server for bookstore:_** Terminates the **Express.js API server** using `pkill` to prevent resource conflicts in subsequent steps.
 
 This CI/CD pipeline automates the process of building, testing, and reporting on the project, ensuring code quality and reliability with each commit.
     
