@@ -35,7 +35,7 @@ jobs:
           npm install
           npm install --save-dev wait-on
 
-      - name: Start server
+      - name: Start API server for bookstore
         run: |
           cd api-bookstore
           npm run dev &
@@ -43,6 +43,9 @@ jobs:
 
       - name: Set environment variable for tests
         run: echo "BASE_URL=${{ secrets.BASE_URL }}" >> $GITHUB_ENV
+
+      - name: Clean allure artifacts before run tests
+        run: rm -rf $GITHUB_WORKSPACE/allure-report $GITHUB_WORKSPACE/allure-results
 
       - name: Run TestNG tests with Maven
         run: |
@@ -68,7 +71,7 @@ jobs:
           name: allure-report
           path: ./allure-report
 
-      - name: Stop API server
+      - name: Stop API server for bookstore
         run: |
           cd api-bookstore
           pkill -f "node server.js" || true
