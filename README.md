@@ -26,7 +26,7 @@ Below are the tools and technologies used in this framework:<br/>
 <a id="one"></a>
 ## 1. Setup local machine
 #### This guide assumes the following:
-* Have **Maven** and **Java 11** installed.<br/>
+* Have **Maven** and **Java 22** installed.<br/>
 
 <a id="two"></a>
 ### Setting up REST API using Express.js
