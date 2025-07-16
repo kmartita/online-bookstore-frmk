@@ -3,7 +3,7 @@
 <suite name = "API Flow Online Bookstore">
     <test name = "Books">
         <packages>
-            <package name="com.allwyn.books"/>
+            <package name="com.kmartita.books"/>
         </packages>
     </test>
 </suite>

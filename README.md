@@ -135,7 +135,7 @@ To run a **specific test class**, use the following command:
 mvn test -Dtest={String}
 ```
 _Parameters:_<br/>
-`-Dtest={String}` - name of Test class.
+`-Dtest={String}` - name of Test class.<br/>
 
 <a id="seven"></a>
 ## 6. Generate Allure REST Assured Report
@@ -150,10 +150,10 @@ To generate the Allure report from the test results, use the following command:
 allure generate allure-results --clean -o allure-report
 ```
 _Parameters:_<br/>
-`allure generate` - tells Allure to create a report.
-`allure-results` - specifies the directory containing the test results.
-`--clean` - removes any previous report data before generating a new report.
-`-o allure-report` - specifies the output directory for the generated report (the report is written to the `allure-report` folder).
+`allure generate` - tells Allure to create a report.<br/>
+`allure-results` - specifies the directory containing the test results.<br/>
+`--clean` - removes any previous report data before generating a new report.<br/>
+`-o allure-report` - specifies the output directory for the generated report (the report is written to the `allure-report` folder).<br/>
 
 After the report is successfully generated, you can view it in your default browser by running the following command:
 ```bash
