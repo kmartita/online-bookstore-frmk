@@ -180,7 +180,7 @@ The configuration file for the workflow is located at `.github/workflows/ci.yml`
 
 The pipeline consists of the following stages:
 1. **_Checkout code:_** retrieves the project code using `actions/checkout@v3`.
-2. **_Set up JDK 11:_** configures **Java 11** for running **Maven** tests using `actions/setup-java@v3`.
+2. **_Set up JDK 22:_** configures **Java 22** for running **Maven** tests using `actions/setup-java@v3`.
 3. **_Install Node.js:_** sets up **Node.js** version 18 for the **Express.js** API using `actions/setup-node@v3`.
 4. **_Install API dependencies:_** installs dependencies for the API server, including **express**, **body-parser**, and **wait-on**.
 5. **_Start API Server for bookstore:_** starts the **Express.js** API server in the background for testing.
