@@ -4,6 +4,8 @@
 ![RestAssured](https://img.shields.io/badge/RestAssured-white?style=for-the-badge&logoSize=auto&color=%236aa84f&cacheSeconds=3600&link=https%3A%2F%2Frest-assured.io)
 ![TestNG](https://img.shields.io/badge/testng-white?style=for-the-badge&logoSize=auto&color=%233d85c6&cacheSeconds=3600&link=https%3A%2F%2Ftestng.org)
 ![Allure Report](https://img.shields.io/badge/allure-white?style=for-the-badge&logoSize=auto&color=%23f1c232&cacheSeconds=3600&link=https%3A%2F%2Fallurereport.org)
+![GitHub Actions](https://img.shields.io/badge/GitHub-white?style=for-the-badge&logo=githubactions&logoSize=auto&color=%23bcbcbc&cacheSeconds=3600)
+
 
 # API Automation Demo Project: REST Assured & Express.js (Node.js)
 
@@ -125,16 +127,16 @@ Creating API test scenarios involves defining test data and expected API behavio
 This project uses **Maven** for dependency management and build automation. The base URL for the API tests can be configured by creating a hidden `.env` file and defining the `BASE_URL` parameter.
 The default value is `http://localhost:3000/api/v1/`, but this setting can be modified directly within the `server.js` file.<br/>
 
-Before running the tests, you must first **start the API server**:
+Before running the tests, you must first **start the API server**:<br/>
 ```bash
 cd api-bookstore
 npm run dev
 ```
-To run **all tests** defined in `testng.xml`, first navigate to the root directory of the framework and then use the following Maven command:
+To run **all tests** defined in `testng.xml`, first navigate to the root directory of the framework and then use the following Maven command:<br/>
 ```bash
 mvn test
 ```
-To run a **specific test class**, use the following command:
+To run a **specific test class**, use the following command:<br/>
 ```bash
 mvn test -Dtest={String}
 ```
@@ -145,12 +147,12 @@ _Parameters:_<br/>
 <a id="five"></a>
 ## 5. Generate Allure REST Assured Report
 Before running tests, it's crucial to clean up any existing test results and reports. This ensures that your report accurately reflects the most recent test run. 
-Use the following command to remove the `allure-report` and `allure-results` directories:
+Use the following command to remove the `allure-report` and `allure-results` directories:<br/>
 ```bash
 rm -rf allure-report allure-results
 ```
 
-To generate the Allure report from the test results, use the following command:
+To generate the Allure report from the test results, use the following command:<br/>
 ```bash
 allure generate allure-results --clean -o allure-report
 ```
@@ -160,14 +162,14 @@ _Parameters:_<br/>
 `--clean` - removes any previous report data before generating a new report.<br/>
 `-o allure-report` - specifies the output directory for the generated report (the report is written to the `allure-report` folder).<br/>
 
-After the report is successfully generated, you can view it in your default browser by running the following command:
+After the report is successfully generated, you can view it in your default browser by running the following command:<br/>
 ```bash
 open allure-report/index.html
 ```
 This command will open the `index.html` file located in the `allure-report` directory, allowing you to interact with the report in your web browser. 
 The exact command might differ based on the operating system you’re using. Linux systems, for example, can use `xdg-open ./allure-report/index.html` to open the report.
 
-Alternatively, Allure provides a command to serve the report directly:
+Alternatively, Allure provides a command to serve the report directly:<br/>
 ```bash
 allure serve
 ```
