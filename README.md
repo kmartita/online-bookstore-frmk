@@ -177,8 +177,8 @@ This command starts a local web server and automatically opens the generated rep
 
 ### Allure Report Overview:
 An example of the generated Allure report looks like this:<br/>
-![RestAssured_Allure Overview](https://github.com/user-attachments/assets/8f94e005-87b1-49ba-b851-2546068aeba9)
-![RestAssured_Allure](https://github.com/user-attachments/assets/154153b0-284d-4080-8c84-3fdc951751a7)
+<img width="964" height="699" alt="allure_overview" src="https://github.com/user-attachments/assets/5b706e9b-3cbc-47ec-aabe-6b875dc3b456" />
+<img width="1739" height="858" alt="allure_report" src="https://github.com/user-attachments/assets/9860344f-eed9-4c45-981d-6e8e4279046a" />
 
 
 <a id="six"></a>
