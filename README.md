@@ -15,8 +15,7 @@ This project aims to create a maintainable test framework, implement reusable co
 This API test automation framework utilizes TestNG and REST Assured, managed with Maven for building, and generates clear, insightful reports using Allure Report.
 It provides a set of predefined test cases to ensure bookstore API functions behave as expected.
 
-
-### ⚙️ Tech Stack
+### Tech Stack:
 - **Programming Languages**: Java, JavaScript
 - **Testing Framework**: TestNG
 - **API Testing Library**: REST Assured
@@ -25,7 +24,7 @@ It provides a set of predefined test cases to ensure bookstore API functions beh
 - **CI/CD**: GitHub Actions
 - **Backend API**: Express.js (Node.js)
 
-### ✅ Requirements
+### Requirements:
 Requires **Java 22**, **Maven 3.9.x**, and **Allure Report 2.33.x** to be installed and properly configured on your local machine.<br/>
 
 ## Table of Contents
@@ -37,21 +36,21 @@ Requires **Java 22**, **Maven 3.9.x**, and **Allure Report 2.33.x** to be instal
 6. [CI/CD Pipeline with GitHub Actions](#six)
 
 <a id="one"></a>
-## 1. Setting up REST API using Express.js
+### 1. Setting up REST API using Express.js
 The REST API, built with **Express.js**, is already set up and configured for immediate use. 
 The following steps provide details for understanding the setup process and exploring the existing configuration:<br/>
 
-### Step 1. Project Initialization:
+#### Step 1. Project Initialization:
 A new project directory (`api-bookstore/`) was created, and `npm init -y` command was used to initialize the project. 
 This generates a `package.json` file, which is essential for managing project dependencies.
 
-### Step 2. Installing Dependencies:
+#### Step 2. Installing Dependencies:
 The following dependencies were installed by running `npm install express body-parser nodemon`:
 *   `express` - the Express.js framework for building the API.
 *   `body-parser` - middleware for parsing request bodies, allowing easy access to data sent in POST and PUT requests.
 *   `nodemon` - utility that automatically restarts the server upon file changes, enhancing the development experience.
 
-### Step 3. Creating `server.js`:
+#### Step 3. Creating `server.js`:
 The core logic of the API resides in the `server.js` file. It handles routing, request processing, and data management, performing the following key tasks:
 *   Loads necessary libraries like Express.js for routing and request handling, and middleware for parsing incoming data.
 *   Creates an instance of the Express application, which serves as the foundation for the API.
@@ -62,7 +61,7 @@ The core logic of the API resides in the `server.js` file. It handles routing, r
 
 You can explore the `server.js` file in the `api-bookstore/` directory for more details on the API implementation.
 
-### Step 4. Configuring `package.json`:
+#### Step 4. Configuring `package.json`:
 The `package.json` is an important file in Node.js projects. It has several critical functions:
 *   Contains **metadata** about the project, such as name, version, description, author, license, etc.
 *   Indicates **dependencies** which other packages (libraries) your project depends on. The `npm` uses this information to install the necessary packages.
@@ -73,14 +72,14 @@ You can explore the `package.json` file in the `api-bookstore/` directory for mo
 It is used to define dependencies (**express**, **body-parser**, **nodemon**) and scripts (`start`, `dev`). 
 This helps to quickly set up the project by simply running `npm install`.
 
-### Step 5. Run server:
+#### Step 5. Run server:
 To start the server in development mode, use the following command `npm run dev`. 
 This command leverages `nodemon` to automatically restart the server whenever file changes are detected. 
 Upon successful startup, you should see a message similar to _"Server is running on port 3000"_ in your terminal, confirming that the API is active and listening for requests.
 
 
 <a id="two"></a>
-## 2. Framework Structure
+### 2. Framework Structure
 The framework's architecture is built on a structured directory organization to ensure scalability and maintainability:<br/>
 ```
 |--online-bookstoore-frmk/
@@ -112,7 +111,7 @@ The framework's architecture is built on a structured directory organization to 
 
 
 <a id="three"></a>
-## 3. Creating API Test Scenarios
+### 3. Creating API Test Scenarios
 Creating API test scenarios involves defining test data and expected API behavior.<br/>
 
 **Steps to Build API Test Scenarios:**
@@ -123,7 +122,7 @@ Creating API test scenarios involves defining test data and expected API behavio
 
 
 <a id="four"></a>
-## 4. API Test Execution
+### 4. API Test Execution
 This project uses **Maven** for dependency management and build automation. The base URL for the API tests can be configured by creating a hidden `.env` file and defining the `BASE_URL` parameter.
 The default value is `http://localhost:3000/api/v1/`, but this setting can be modified directly within the `server.js` file.<br/>
 
@@ -145,7 +144,7 @@ _Parameters:_<br/>
 
 
 <a id="five"></a>
-## 5. Generate Allure REST Assured Report
+### 5. Generate Allure REST Assured Report
 Before running tests, it's crucial to clean up any existing test results and reports. This ensures that your report accurately reflects the most recent test run. 
 Use the following command to remove the `allure-report` and `allure-results` directories:<br/>
 ```bash
@@ -175,14 +174,14 @@ allure serve
 ```
 This command starts a local web server and automatically opens the generated report in your default browser.
 
-### Allure Report Overview:
+#### Allure Report Overview:
 An example of the generated Allure report looks like this:<br/>
 <img width="964" height="699" alt="allure_overview" src="https://github.com/user-attachments/assets/5b706e9b-3cbc-47ec-aabe-6b875dc3b456" />
 <img width="1739" height="858" alt="allure_report" src="https://github.com/user-attachments/assets/9860344f-eed9-4c45-981d-6e8e4279046a" />
 
 
 <a id="six"></a>
-## 6. CI/CD Pipeline with GitHub Actions
+### 6. CI/CD Pipeline with GitHub Actions
 This project utilizes a CI/CD pipeline configured using GitHub Actions. The pipeline automates the testing process, ensuring that every code change is thoroughly validated. 
 The configuration file for the workflow is located at `.github/workflows/ci.yml`.
 
