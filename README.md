@@ -231,4 +231,7 @@ The pipeline consists of the following stages:
 
 This CI/CD pipeline automates the process of building, testing, and reporting on the project, ensuring code quality and reliability with each commit.
 
-### Copyright (c) 2025 Marta Kravchuk under MIT License.
+
+
+---
+#### Copyright (c) 2025 Marta Kravchuk under MIT License.
