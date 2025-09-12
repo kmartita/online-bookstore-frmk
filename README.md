@@ -36,7 +36,7 @@ Requires **Java 22**, **Maven 3.9.x**, and **Allure Report 2.33.x** to be instal
 6. [CI/CD Pipeline with GitHub Actions](#six)
 
 <a id="one"></a>
-### 1. Setting up REST API using Express.js
+## 1. Setting up REST API using Express.js
 The REST API, built with **Express.js**, is already set up and configured for immediate use. 
 The following steps provide details for understanding the setup process and exploring the existing configuration:<br/>
 
@@ -79,7 +79,7 @@ Upon successful startup, you should see a message similar to _"Server is running
 
 
 <a id="two"></a>
-### 2. Framework Structure
+## 2. Framework Structure
 The framework's architecture is built on a structured directory organization to ensure scalability and maintainability:<br/>
 ```
 |--online-bookstoore-frmk/
@@ -111,18 +111,46 @@ The framework's architecture is built on a structured directory organization to 
 
 
 <a id="three"></a>
-### 3. Creating API Test Scenarios
+## 3. Creating API Test Scenarios
 Creating API test scenarios involves defining test data and expected API behavior.<br/>
 
 **Steps to Build API Test Scenarios:**
 1. _Generate Required Test Data:_ use the `TestData` utility to generate the required test data model with necessary fields.
+```java
+TestData<BookFields> data_with_required_fields = TestData
+        .preGenerate(ResourceUtil.getRequiredFields(BookFields.class))
+        .build();
+```
 2. _Customize Test Data:_ modify the test data by removing fields or setting specific field values to suit different test scenarios.
+```java
+TestData<BookFields> data = TestData
+        .preGenerate(ResourceUtil.getRequiredFields(BookFields.class))
+        .setField(BookFields.DESCRIPTION, BookFields.DESCRIPTION.generate())
+        .build()
+        .edit(BookFields.COMPLETED, false);
+```
 3. _Define Response Specifications:_ create expected response specifications using REST Assured to validate API responses.
-4. _Execute API Requests:_ perform API requests using the generated test data and validate responses against the defined specifications.
-
+```java
+ResponseSpecification specification = new ResponseSpecBuilder()
+                .expectStatusCode(StatusCodeData.STATUS_CODE_201)
+                .expectStatusLine(StatusCodeData.CREATED)
+                .expectBody("title", Matchers.equalTo(data.getString(BookFields.TITLE)))
+                .expectBody("pageCount", Matchers.equalTo(data.getInteger(BookFields.PAGE_COUNT)))
+                .expectBody("completed", Matchers.is(data.getBoolean(BookFields.COMPLETED)))
+                .expectBody("authorId", Matchers.nullValue())
+                .build();
+```
+4. _Execute API Requests & validate API Response:_ perform API requests using the generated test data and validate responses against the defined specifications.
+```java
+ResponseHandler response = new ApiRequestExecutor()
+        .post(Entity.BOOKS, data)
+        .validate(ResponseSpecHelper.specOnSchemaValidating("schemas/book.json"))
+        .validate(specification)
+        .validate(ResponseSpecHelper.specOnCreating());
+```
 
 <a id="four"></a>
-### 4. API Test Execution
+## 4. API Test Execution
 This project uses **Maven** for dependency management and build automation. The base URL for the API tests can be configured by creating a hidden `.env` file and defining the `BASE_URL` parameter.
 The default value is `http://localhost:3000/api/v1/`, but this setting can be modified directly within the `server.js` file.<br/>
 
@@ -144,7 +172,7 @@ _Parameters:_<br/>
 
 
 <a id="five"></a>
-### 5. Generate Allure REST Assured Report
+## 5. Generate Allure REST Assured Report
 Before running tests, it's crucial to clean up any existing test results and reports. This ensures that your report accurately reflects the most recent test run. 
 Use the following command to remove the `allure-report` and `allure-results` directories:<br/>
 ```bash
@@ -181,7 +209,7 @@ An example of the generated Allure report looks like this:<br/>
 
 
 <a id="six"></a>
-### 6. CI/CD Pipeline with GitHub Actions
+## 6. CI/CD Pipeline with GitHub Actions
 This project utilizes a CI/CD pipeline configured using GitHub Actions. The pipeline automates the testing process, ensuring that every code change is thoroughly validated. 
 The configuration file for the workflow is located at `.github/workflows/ci.yml`.
 
@@ -202,4 +230,5 @@ The pipeline consists of the following stages:
 14. **_Stop API Server for bookstore:_** Terminates the **Express.js API server** using `pkill` to prevent resource conflicts in subsequent steps.
 
 This CI/CD pipeline automates the process of building, testing, and reporting on the project, ensuring code quality and reliability with each commit.
-    
+
+### Copyright (c) 2025 Marta Kravchuk under MIT License.
