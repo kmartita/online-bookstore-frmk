@@ -206,7 +206,7 @@ ResponseHandler response = new ApiRequestExecutor()
 This project uses **Maven** for dependency management and build automation. The base URL for the API tests can be configured by creating a hidden `.env` file and defining the `BASE_URL` parameter.
 The default value is `http://localhost:3000/api/v1/`, but this setting can be modified directly within the `server.js` file.<br/>
 
-Before running the tests, you must first **start the API server**:<br/>
+Before running the tests, first **start the API server**:<br/>
 ```bash
 cd api-bookstore
 npm run dev
@@ -223,7 +223,7 @@ mvn test -Dtest=BookScenarioTest
 
 <a id="five"></a>
 ## 5. Generate Allure REST Assured Report
-Before running tests, it's crucial to clean up any existing test results and reports. This ensures that your report accurately reflects the most recent test run. 
+Before running tests, it's crucial to clean up any existing test results and reports. This ensures that report accurately reflects the most recent test run. 
 Use the following command to remove the `allure-report` and `allure-results` directories:<br/>
 ```bash
 rm -rf allure-report allure-results
