@@ -89,7 +89,7 @@ app.get('/api/v1/Books', (req, res) => {
 
 app.delete('/api/v1/Books/:id', (req, res) => {
     books = books.filter(b => b.id !== parseInt(req.params.id));
-    res.status(204).send(); // Delete book and return 204 No Content
+    res.status(204).send();
 });
 ```
 *   Initiates the Express application, listening for incoming requests on the designated port (default: 3000) and activating the API endpoints.
@@ -205,6 +205,9 @@ ResponseHandler response = new ApiRequestExecutor()
 ## 4. API Test Execution
 This project uses **Maven** for dependency management and build automation. The base URL for the API tests can be configured by creating a hidden `.env` file and defining the `BASE_URL` parameter.
 The default value is `http://localhost:3000/api/v1/`, but this setting can be modified directly within the `server.js` file.<br/>
+```properties
+BASE_URL = http://localhost:3000/api/v1/
+```
 
 Before running the tests, first **start the API server**:<br/>
 ```bash
