@@ -40,40 +40,92 @@ Requires **Java 22**, **Maven 3.9.x**, and **Allure Report 2.33.x** to be instal
 The REST API, built with **Express.js**, is already set up and configured for immediate use. 
 The following steps provide details for understanding the setup process and exploring the existing configuration:<br/>
 
-#### Step 1. Project Initialization:
-A new project directory (`api-bookstore/`) was created, and `npm init -y` command was used to initialize the project. 
-This generates a `package.json` file, which is essential for managing project dependencies.
+##### Step 1. Project Initialization:
+A new project directory (`api-bookstore/`) was created, and the following command was used to initialize the project.
+```bash
+npm init -y
+```
+This command generates a `package.json` file, which is essential for managing project dependencies.
 
-#### Step 2. Installing Dependencies:
-The following dependencies were installed by running `npm install express body-parser nodemon`:
-*   `express` - the Express.js framework for building the API.
-*   `body-parser` - middleware for parsing request bodies, allowing easy access to data sent in POST and PUT requests.
-*   `nodemon` - utility that automatically restarts the server upon file changes, enhancing the development experience.
+##### Step 2. Installing Dependencies:
+The following dependencies were installed by running command:
+```bash
+npm install express body-parser nodemon
+```
+_Parameters:_<br/>
+`express` - the Express.js framework for building the API.<br/>
+`body-parser` - middleware for parsing request bodies, allowing easy access to data sent in POST and PUT requests.<br/>
+`nodemon` - utility that automatically restarts the server upon file changes, enhancing the development experience.<br/>
 
-#### Step 3. Creating `server.js`:
+##### Step 3. Creating `server.js`:
 The core logic of the API resides in the `server.js` file. It handles routing, request processing, and data management, performing the following key tasks:
 *   Loads necessary libraries like Express.js for routing and request handling, and middleware for parsing incoming data.
 *   Creates an instance of the Express application, which serves as the foundation for the API.
 *   Sets up middleware functions for tasks such as parsing JSON request bodies and handling authentication.
+
+_Example:_<br/>
+```js
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+app.use(bodyParser.json());
+```
 *   Establishes the data models and structures used to represent the API's resources, such as in-memory storage or database connections.
+
+_Example:_<br/>
+```js
+let books = [
+   { id: 1, title: 'Book 1', pageCount: 200, completed: false, description: null, authorId: 1 },
+   { id: 2, title: 'Book 2', pageCount: 130, completed: true, description: 'A great book!', authorId: null }
+];
+```
 *   Creates routes for handling various HTTP requests (GET, POST, PUT, DELETE) to manage resources and execute actions.
+
+_Example:_<br/>
+```js
+app.get('/api/v1/Books', (req, res) => {
+   res.json({ "Books": books });
+});
+
+app.delete('/api/v1/Books/:id', (req, res) => {
+    books = books.filter(b => b.id !== parseInt(req.params.id));
+    res.status(204).send(); // Delete book and return 204 No Content
+});
+```
 *   Initiates the Express application, listening for incoming requests on the designated port (default: 3000) and activating the API endpoints.
 
-You can explore the `server.js` file in the `api-bookstore/` directory for more details on the API implementation.
+_Example:_<br/>
+```js
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+   console.log(`Server is running on port ${PORT}`);
+});
+```
 
-#### Step 4. Configuring `package.json`:
+> **Note:**<br/>
+> To explore the `server.js` file, please refer to the `api-bookstore/` directory for additional details on the API implementation.
+
+##### Step 4. Configuring `package.json`:
 The `package.json` is an important file in Node.js projects. It has several critical functions:
 *   Contains **metadata** about the project, such as name, version, description, author, license, etc.
 *   Indicates **dependencies** which other packages (libraries) your project depends on. The `npm` uses this information to install the necessary packages.
 *   Allows you to define **scripts** to automate various tasks, such as starting, testing, or building your project.
 *   Contains additional settings for tools used in the project.
 
-You can explore the `package.json` file in the `api-bookstore/` directory for more details. 
-It is used to define dependencies (**express**, **body-parser**, **nodemon**) and scripts (`start`, `dev`). 
-This helps to quickly set up the project by simply running `npm install`.
+> **Note:**<br/>
+> To explore the `package.json` file, please refer to the `api-bookstore/` directory for more details.
+> It is used to define dependencies (`express`, `body-parser`, `nodemon`) and scripts (`start`, `dev`).
 
-#### Step 5. Run server:
-To start the server in development mode, use the following command `npm run dev`. 
+To quickly set up the project by simply running the command:
+```bash
+npm install
+```
+
+##### Step 5. Run server:
+To start the server in development mode, use the following command:
+```bash
+npm run dev
+```
 This command leverages `nodemon` to automatically restart the server whenever file changes are detected. 
 Upon successful startup, you should see a message similar to _"Server is running on port 3000"_ in your terminal, confirming that the API is active and listening for requests.
 
@@ -115,13 +167,13 @@ The framework's architecture is built on a structured directory organization to 
 Creating API test scenarios involves defining test data and expected API behavior.<br/>
 
 **Steps to Build API Test Scenarios:**
-1. _Generate Required Test Data:_ use the `TestData` utility to generate the required test data model with necessary fields.
+##### 1. _Generate Required Test Data:_ use the `TestData` utility to generate the required test data model with necessary fields.
 ```java
 TestData<BookFields> data_with_required_fields = TestData
         .preGenerate(ResourceUtil.getRequiredFields(BookFields.class))
         .build();
 ```
-2. _Customize Test Data:_ modify the test data by removing fields or setting specific field values to suit different test scenarios.
+##### 2. _Customize Test Data:_ modify the test data by removing fields or setting specific field values to suit different test scenarios.
 ```java
 TestData<BookFields> data = TestData
         .preGenerate(ResourceUtil.getRequiredFields(BookFields.class))
@@ -129,7 +181,7 @@ TestData<BookFields> data = TestData
         .build()
         .edit(BookFields.COMPLETED, false);
 ```
-3. _Define Response Specifications:_ create expected response specifications using REST Assured to validate API responses.
+##### 3. _Define Response Specifications:_ create expected response specifications using REST Assured to validate API responses.
 ```java
 ResponseSpecification specification = new ResponseSpecBuilder()
                 .expectStatusCode(StatusCodeData.STATUS_CODE_201)
@@ -140,7 +192,7 @@ ResponseSpecification specification = new ResponseSpecBuilder()
                 .expectBody("authorId", Matchers.nullValue())
                 .build();
 ```
-4. _Execute API Requests & validate API Response:_ perform API requests using the generated test data and validate responses against the defined specifications.
+##### 4. _Execute API Requests & validate API Response:_ perform API requests using the generated test data and validate responses against the defined specifications.
 ```java
 ResponseHandler response = new ApiRequestExecutor()
         .post(Entity.BOOKS, data)
@@ -165,10 +217,8 @@ mvn test
 ```
 To run a **specific test class**, use the following command:<br/>
 ```bash
-mvn test -Dtest={String}
+mvn test -Dtest=BookScenarioTest
 ```
-_Parameters:_<br/>
-`-Dtest={String}` - name of Test class.<br/>
 
 
 <a id="five"></a>
